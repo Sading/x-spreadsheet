@@ -166,11 +166,12 @@ function overlayerMousemove(evt) {
   }
 }
 
-let scrollThreshold = 15;
+// 来自 https://github.com/myliang/x-spreadsheet/issues/368 这个Issues的修改，但是在电脑上体验很不好
+// let scrollThreshold = 15;
 function overlayerMousescroll(evt) {
-  scrollThreshold -= 1;
-  if (scrollThreshold > 0) return;
-  scrollThreshold = 15;
+  // scrollThreshold -= 1;
+  // if (scrollThreshold > 0) return;
+  // scrollThreshold = 15;
 
   const { verticalScrollbar, horizontalScrollbar, data } = this;
   const { top } = verticalScrollbar.scroll();
@@ -435,6 +436,7 @@ function editorSetOffset() {
 function editorSet() {
   const { editor, data } = this;
   if (data.settings.mode === 'read') return;
+  if (data.settings.cannotActive(data.selector.ri, data.selector.ci)) return;
   editorSetOffset.call(this);
   editor.setCell(data.getSelectedCell(), data.getSelectedValidator());
   clearClipboard.call(this);
