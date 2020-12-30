@@ -77,7 +77,7 @@ const defaultSettings = {
   showGrid: true,
   showToolbar: true,
   showContextmenu: true,
-  // cannotActive: () => {return false},
+  cannotActive: () => {return false},
   row: {
     len: 100,
     height: 25,

@@ -53,9 +53,9 @@
       var setting = {
         showToolbar: true,
         showGrid: true,
-        // cannotActive: (ri, ci) => {
-        //   return ri % 2 === 0 && ci % 2 === 0;
-        // }
+        cannotActive: (ri, ci) => {
+          return ri === 10 && ci === 6;
+        }
       }
 
       // x_spreadsheet.locale('zh-cn');
