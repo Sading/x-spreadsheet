@@ -115,6 +115,9 @@ class Spreadsheet {
   static locale(lang, message) {
     locale(lang, message);
   }
+
+
+  // 自定义适应产品工具方法
 }
 
 const spreadsheet = (el, options = {}) => new Spreadsheet(el, options);

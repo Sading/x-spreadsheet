@@ -13,7 +13,9 @@
   <div id="x-spreadsheet-demo"></div>
   <script>
     function load(){
-      const rows10 = { len: 1000 };
+      const rows10 = {
+        len: 1000
+      };
       for (let i = 0; i < 1000; i += 1) {
         rows10[i] = {
           cells: {
@@ -22,7 +24,7 @@
             2: { text: 'C-' + i },
             3: { text: 'D-' + i },
             4: { text: 'E-' + i },
-            5: { text: 'F-' + i },
+            5: { text: 'F-' + i , style: 0},
           }
         };
       }
@@ -37,7 +39,7 @@
         2: {
           cells: {
             0: { text: 'render', style: 0 },
-            1: { text: 'Hello' },
+            1: { text: 'Hello', cannotActive: true},
             2: { text: 'haha', merge: [1, 1] },
           }
         },
@@ -51,9 +53,9 @@
       var setting = {
         showToolbar: true,
         showGrid: true,
-        cannotActive: (ri, ci) => {
-          return ri % 2 === 0 && ci % 2 === 0;
-        }
+        // cannotActive: (ri, ci) => {
+        //   return ri % 2 === 0 && ci % 2 === 0;
+        // }
       }
 
       // x_spreadsheet.locale('zh-cn');
@@ -81,7 +83,15 @@
             2: { width: 200 },
           },
           rows,
-        }, { name: 'sheet-test', rows: rows10 }]).change((cdata) => {
+        }, {
+          name: 'sheet-test',
+          styles: [
+            {
+              bgcolor: '#451214'
+            }
+          ],
+          rows: rows10
+        }]).change((cdata) => {
           // console.log(cdata);
           console.log('>>>', xs.getData());
         });
@@ -98,6 +108,8 @@
         console.log('cell(8, 8):', xs.cell(8, 8));
         console.log('cellStyle(8, 8):', xs.cellStyle(8, 8));
       }, 5000);
+
+      window.testXS = xs;
     }
   </script>
   <!--script type="text/javascript" src="https://unpkg.com/x-data-spreadsheet@1.0.20/dist/locale/zh-cn.js"></script-->

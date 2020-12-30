@@ -436,7 +436,8 @@ function editorSetOffset() {
 function editorSet() {
   const { editor, data } = this;
   if (data.settings.mode === 'read') return;
-  if (data.settings.cannotActive(data.selector.ri, data.selector.ci)) return;
+  if (data.rows._[data.selector.ri] && data.rows._[data.selector.ri].cells[data.selector.ci].cannotActive) return;
+  // if (data.settings.cannotActive(data.selector.ri, data.selector.ci)) return;
   editorSetOffset.call(this);
   editor.setCell(data.getSelectedCell(), data.getSelectedValidator());
   clearClipboard.call(this);
